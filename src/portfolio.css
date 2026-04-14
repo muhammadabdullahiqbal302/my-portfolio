@@ -5,11 +5,11 @@
 /* Orion Charts UI kit (community) — dark dashboard: #4C39F4, #599FD4, #6951C2, #DE3F6C, #B0A7DA, #C49FC8, #E0DDF7 */
 
 :root {
-  --bg: #0e0b18;
+  --bg: #171227;
   --bg-panel: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-blur: blur(30px); /* Enhanced for better glass feel */
-  --bg-elevated: #16122a;
+  --bg-elevated: #393259;
   --text: #e8e4f7;
   --text-muted: #a39bc4;
   --border: rgba(176, 167, 218, 0.14);
