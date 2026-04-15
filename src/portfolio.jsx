@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useId } from 'react';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-motion';
 import './portfolio.css';
+import IntroScreen from './IntroScreen.jsx';
 
 /** Orion Charts UI kit–inspired tokens (community palette: violet, blue, purple, rose, lilac) */
 const SITE = {
@@ -464,8 +465,8 @@ const Portfolio = () => {
               }
             }}
           >
-            <motion.img 
-              src="/images/IMG_1076.jpg" 
+            <motion.img
+              src="./IMG_2890.JPG"
               alt="M. Abdullah Iqbal - Profile" 
               className="profile-avatar"
               whileHover={{ scale: 1.05, y: -8 }}
