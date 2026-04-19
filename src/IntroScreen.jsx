@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './IntroScreen.css'; // Styling ke liye niche CSS bhi di hai
 
 const IntroScreen = ({ onFinished }) => {

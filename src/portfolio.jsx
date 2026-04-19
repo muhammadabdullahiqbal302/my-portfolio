@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useId } from 'react';
-import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-motion';
+import { motion, useInView, useReducedMotion,} from 'framer-motion';
 import './portfolio.css';
-import IntroScreen from './IntroScreen.jsx';
+
 
 /** Orion Charts UI kit–inspired tokens (community palette: violet, blue, purple, rose, lilac) */
 const SITE = {
@@ -147,7 +147,7 @@ function OrionHeroChart({ revealed }) {
 const Portfolio = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [navVisible, setNavVisible] = useState(true);
+  // const [navVisible, setNavVisible] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('portfolio-theme');
     return saved ? JSON.parse(saved) : true;
