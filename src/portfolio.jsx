@@ -171,7 +171,7 @@ const Portfolio = () => {
     const onScroll = () => {
       const currentScroll = window.scrollY;
       setScrolled(currentScroll > 24);
-      setNavVisible(true); 
+      // setNavVisible(true); 
       lastScrollRef.current = currentScroll;
     };
     onScroll();
@@ -181,7 +181,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
-    if (menuOpen) setNavVisible(true);
+    // if (menuOpen) setNavVisible(true);
     return () => {
       document.body.style.overflow = '';
     };
