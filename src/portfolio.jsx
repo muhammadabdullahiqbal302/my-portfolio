@@ -32,7 +32,7 @@ const SKILL_LEVELS = [
   { name: 'React', pct: 92, tone: 'violet' },
   { name: 'JavaScript', pct: 88, tone: 'blue' },
   { name: 'HTML & CSS', pct: 90, tone: 'purple' },
-  { name: 'Design systems', pct: 78, tone: 'rose' },
+  { name: 'Design systems', pct: 80, tone: 'rose' },
 ];
 
 const PROJECTS = [
@@ -466,8 +466,7 @@ const Portfolio = () => {
             }}
           >
             <motion.img
-              src="./IMG_2890.JPG"
-              alt="M. Abdullah Iqbal - Profile" 
+              src="/IMG_2890.JPG" alt="Abdullah Iqbal Profile"  
               className="profile-avatar"
               whileHover={{ scale: 1.05, y: -8 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
