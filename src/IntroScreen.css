@@ -264,3 +264,9 @@
   0%   { width: 0%;   }
   100% { width: 100%; }
 }
+@media (max-width: 768px) {
+  .intro-container {
+    position: fixed !important;
+    height: 100dvh !important;
+  }
+}

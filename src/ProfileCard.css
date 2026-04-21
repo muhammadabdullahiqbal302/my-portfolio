@@ -222,3 +222,22 @@
     transform: none !important;
   }
 }
+@media (max-width: 768px) {
+  .profile-card-container {
+    height: 500px !important;
+    overflow: visible !important;
+  }
+
+  .profile-main-wrapper {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10 !important;
+  }
+
+  .profile-pic {
+    width: 260px !important;
+    height: auto !important;
+  }
+}

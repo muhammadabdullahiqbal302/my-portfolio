@@ -184,7 +184,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="portfolio">
+    <div className={`portfolio ${menuOpen ? 'nav-is-open' : ''}`}>
       <div className="portfolio__glow" aria-hidden="true" />
 
       <a className="skip-link" href="#main">

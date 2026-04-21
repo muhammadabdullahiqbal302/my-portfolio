@@ -1494,3 +1494,36 @@ html.light-mode .site-nav__cta:hover {
     opacity: 1 !important;
   }
 }
+/* Mobile scroll flicker fix */
+@media (max-width: 768px) {
+  .portfolio::before {
+    display: none !important;
+  }
+
+  .portfolio__glow {
+    display: none !important;
+  }
+}/* Navbar mobile glass effect */
+@media (max-width: 768px) {
+  .site-nav--open {
+    background: rgba(15, 23, 42, 0.75) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+  }
+
+  /* Peche ka content blur ho jaye */
+  .site-nav--open ~ * {
+    filter: blur(4px);
+    transition: filter 0.3s ease;
+  }
+}.nav-is-open main,
+.nav-is-open footer {
+  filter: blur(4px);
+  transition: filter 0.3s ease;
+  pointer-events: none;
+}
+
+main, footer {
+  filter: blur(0px);
+  transition: filter 0.3s ease;
+}
