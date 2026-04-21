@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react'; // 'useState' aur 'useEffect' add kiya
-import Portfolio from './portfolio'; // Path check kar lena agar './portfolio' hai ya kuch aur
+import React, { useState, useEffect } from 'react'; 
+import Portfolio from './portfolio'; 
 import IntroScreen from './IntroScreen'; 
+import ProfileCard from './ProfileCard'; // Naya animated component import kiya
 
 function App() {
-  // Shuru mein intro dikhane ke liye state 'true' rakhi hai
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 3 seconds baad loading ko false kar dega
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
@@ -18,10 +17,10 @@ function App() {
   return (
     <div className="App">
       {loading ? (
-        // Jab tak loading true hai, IntroScreen dikhao
         <IntroScreen onFinished={() => setLoading(false)} />
       ) : (
-        // Jab loading false ho jaye, tab Portfolio dikhao
+        /* Pechla code waisa hi hai, Portfolio load hoga */
+        /* Ab tum Portfolio ke andar ya yahan kahin bhi <ProfileCard /> use kar sakte ho */
         <Portfolio />
       )}
     </div>

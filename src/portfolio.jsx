@@ -1,30 +1,34 @@
 import React, { useState, useEffect, useRef, useId } from 'react';
 import { motion, useInView, useReducedMotion,} from 'framer-motion';
+import ProfileCard from './ProfileCard'; // Ye line top par add karo
 import './portfolio.css';
 
 
 /** Orion Charts UI kit–inspired tokens (community palette: violet, blue, purple, rose, lilac) */
 const SITE = {
-  brand: 'Abdullah.',
-  name: 'M. Abdullah Iqbal',
-  role: 'Developer & creative',
+  brand: 'M.Abdullah Portfolio.',
+  name: 'M.Abdullah Iqbal',
+  role: 'Developer & creative Video Editor',
   headline: 'I build fast, accessible web experiences and craft visual stories.',
   focus:
-    'Web development, API-driven interfaces, video production, and graphic design.',
-  email: 'mailto:hello@example.com',
+    'Web development,  Video Editing, and Graphic Design.',
+  email: 'mailto:muhammadabdullah2012726701@gmail.com',
   social: [
-    { label: 'LinkedIn', href: 'https://linkedin.com' },
-    { label: 'GitHub', href: 'https://github.com' },
-    { label: 'Email', href: 'mailto:hello@example.com' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammad-abdullah-913179381' },
+    { label: 'GitHub', href: 'https://github.com/muhammadabdullahiqbal302' },
+    { label: 'Email', href: 'mailto:muhammadabdullah2012726701@gmail.com' },
   ],
 };
 
 const SKILLS = [
   'Premiere Pro',
   'After Effects',
+  '3D Tracking',
+  'Photoshop',
+  'Illustrator',
+  'Web Development',
   'Brand & layout',
   'REST APIs',
-  'Responsive UI',
 ];
 
 /** Bar-style proficiency (Orion dashboard widgets) — edit labels & values */
@@ -37,27 +41,40 @@ const SKILL_LEVELS = [
 
 const PROJECTS = [
   {
-    title: 'Dynamic product gallery',
-    desc: 'React SPA with search, filters, and third-party API integration.',
-    stack: 'React · Fetch API · CSS Grid',
+    title: 'Web Development',
+    desc: [
+      'Building modern, fast & accessible web apps with React.',
+      '2-3 years of experience with AI-assisted workflows.',
+      'Responsive UIs and API-driven interfaces.',
+    ],
+    stack: 'React · JavaScript · REST APIs · AI Tools',
     href: '#work',
     chartTone: 'violet',
   },
   {
-    title: 'YouTube automation pipeline',
-    desc: 'End-to-end scripting, editing, and publishing workflow for long-form content.',
-    stack: 'Premiere · Photoshop · Notion',
+    title: 'Video Editing',
+    desc: [
+      'End-to-end video production with Premiere Pro & After Effects.',
+      '3D tracking and motion graphics experience.',
+      '3 years creating long-form and short-form content.',
+    ],
+    stack: 'Premiere Pro · After Effects · 3D Tracking',
     href: '#work',
     chartTone: 'blue',
   },
   {
-    title: 'Brand identity kit',
-    desc: 'Logo system, typography, and social templates for a local business.',
-    stack: 'Illustrator · Figma',
+    title: 'Graphic Design',
+    desc: [
+      'Brand identities, logos, and social media assets.',
+      'Photoshop & Illustrator — driven by original ideas.',
+      'Creative concepts fused with personal vision.',
+    ],
+    stack: 'Photoshop · Illustrator · Brand Design',
     href: '#work',
     chartTone: 'purple',
   },
 ];
+
 
 const NAV = [
   { id: 'work', label: 'Work' },
@@ -331,6 +348,7 @@ const Portfolio = () => {
               </motion.p>
               <motion.h1 className="hero__title" variants={fadeUp}>
                 <span className="hero__line hero__line--gradient">{SITE.role}</span>
+               
               </motion.h1>
               <motion.p className="hero__lead" variants={fadeUp}>
                 {SITE.headline}
@@ -358,7 +376,8 @@ const Portfolio = () => {
               </motion.div>
             </motion.div>
 
-           <motion.aside
+   {/* Line 212 se 234 tak ka kachra saaf karein aur ye likhein */}
+<motion.aside
   className="hero__aside"
   ref={heroRef}
   data-chart-reveal="hero"
@@ -370,28 +389,16 @@ const Portfolio = () => {
   }
   transition={{ duration: t, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
 >
-  {/* Sirf original chart wapis agaya */}
-  <OrionHeroChart revealed={heroInView} />
+  <ProfileCard /> 
 </motion.aside>
           </div>
         </section>
 
-        <motion.section
-          id="work"
-          ref={workRef}
-          className={`section section--work ${workInView ? 'section--charts-in' : ''}`}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2, margin: '-8% 0px' }}
-          variants={sectionReveal}
-        >
+        <section id="work" className="section section--work">
           <div className="section__head">
             <span className="section__tag">Data viz · Projects</span>
             <h2 className="section__title">Selected work</h2>
-            <p className="section__intro">
-              Cards styled like Orion dashboard tiles. Point each link to your demo or
-              case study.
-            </p>
+           
           </div>
           <motion.ul
             className="project-list"
@@ -419,7 +426,11 @@ const Portfolio = () => {
                       →
                     </span>
                   </div>
-                  <p className="project-card__desc">{p.desc}</p>
+                  <ul className="project-card__desc-list">
+  {p.desc.map((point, i) => (
+    <li key={i}>{point}</li>
+  ))}
+</ul>
                   <div
                     className="project-card__spark"
                     aria-hidden
@@ -437,8 +448,7 @@ const Portfolio = () => {
               </motion.li>
             ))}
           </motion.ul>
-        </motion.section>
-
+        </section>
         <motion.section
           id="about"
           className="section section--about"
@@ -451,27 +461,6 @@ const Portfolio = () => {
             <span className="section__tag">About</span>
             <h2 className="section__title">Profile</h2>
           </div>
-          <motion.div 
-            className="profile-avatar-container"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0, y: 24 },
-              visible: { 
-                opacity: 1, 
-                y: 0,
-                transition: { duration: t, ease: [0.22, 1, 0.36, 1] }
-              }
-            }}
-          >
-            <motion.img
-              src="/IMG_2890.JPG" alt="Abdullah Iqbal Profile"  
-              className="profile-avatar"
-              whileHover={{ scale: 1.05, y: -8 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-            />
-          </motion.div>
           <motion.div
             className="about-grid"
             variants={cardStagger}
@@ -480,21 +469,17 @@ const Portfolio = () => {
             viewport={{ once: true, amount: 0.2 }}
           >
             <motion.div className="about-card" variants={cardItem}>
-              <h3>Who I am</h3>
-              <p>
-                I&apos;m <strong>{SITE.name}</strong> — I care about clear structure,
-                performance, and visuals that support the story. I enjoy owning a
-                project from outline to shipped pixels.
-              </p>
-            </motion.div>
-            <motion.div className="about-card" variants={cardItem}>
-              <h3>How I work</h3>
-              <p>
-                Short feedback loops, documented decisions, and reusable components.
-                On the creative side, I keep timelines organized and deliverables
-                consistent with brand guidelines.
-              </p>
-            </motion.div>
+  <h3>Who I am</h3>
+  <p>
+    I&apos;m <strong>{SITE.name}</strong> — a web developer, video editor, and graphic designer. I bring ideas to life using my own creativity and AI-assisted workflows, turning concepts into professional digital experiences.
+  </p>
+</motion.div>
+<motion.div className="about-card" variants={cardItem}>
+  <h3>How I work</h3>
+  <p>
+    I handle most of the work myself — building files independently and with AI assistance to maintain professional quality. My video editing is driven by my own thinking and vision. For graphic design, I draw from my imagination, sometimes taking inspiration from social media and fusing it with my own creative ideas to produce something entirely new.
+  </p>
+</motion.div>
           </motion.div>
         </motion.section>
 
@@ -509,50 +494,76 @@ const Portfolio = () => {
           <div className="section__head">
             <span className="section__tag">Widgets · Skills</span>
             <h2 className="section__title">Skills & tools</h2>
-            <p className="section__intro">
-              Bar rows mirror Orion chart widgets. Edit <code>SKILL_LEVELS</code> in{' '}
-              <code>portfolio.jsx</code>.
-            </p>
+            
           </div>
-          <div className="skills-split">
-            <ul
-              ref={skillsRef}
-              data-chart-reveal="skills"
-              className={`skill-bars ${skillsInView ? 'chart-revealed' : ''}`}
-            >
-              {SKILL_LEVELS.map(({ name, pct, tone }, i) => (
-                <li
-                  key={name}
-                  className={`skill-bars__row skill-bars__row--${tone}`}
-                  style={{ '--row-i': i }}
-                >
-                  <div className="skill-bars__label">
-                    <span>{name}</span>
-                    <span className="skill-bars__pct">{pct}%</span>
-                  </div>
-                  <div className="skill-bars__track">
-                    <div
-                      className="skill-bars__fill"
-                      style={{ '--skill-pct': `${pct}%` }}
-                    />
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <motion.ul
-              className="skill-pills"
-              variants={cardStagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {SKILLS.map((s) => (
-                <motion.li key={s} variants={cardItem}>
-                  {s}
-                </motion.li>
-              ))}
-            </motion.ul>
+         <div className="skills-split">
+  {/* Top - Pills */}
+  <motion.ul
+    className="skill-pills skill-pills--top"
+    variants={cardStagger}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+  >
+    {SKILLS.map((s) => (
+      <motion.li key={s} variants={cardItem}>
+        {s}
+      </motion.li>
+    ))}
+  </motion.ul>
+
+  {/* Bottom - Both bars side by side */}
+  <div className="skills-bars-row">
+    {/* Left - Web Dev bars */}
+    <ul
+      ref={skillsRef}
+      className={`skill-bars ${skillsInView ? 'chart-revealed' : ''}`}
+    >
+      {SKILL_LEVELS.map(({ name, pct, tone }, i) => (
+        <li
+          key={name}
+          className={`skill-bars__row skill-bars__row--${tone}`}
+          style={{ '--row-i': i }}
+        >
+          <div className="skill-bars__label">
+            <span>{name}</span>
+            <span className="skill-bars__pct">{pct}%</span>
           </div>
+          <div className="skill-bars__track">
+            <div className="skill-bars__fill"
+              style={{ '--skill-pct': `${pct}%` }} />
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    {/* Right - Creative bars */}
+    <ul
+      className={`skill-bars ${skillsInView ? 'chart-revealed' : ''}`}
+    >
+      {[
+        { name: 'After Effects', pct: 85, tone: 'violet' },
+        { name: 'Premiere Pro',  pct: 88, tone: 'blue'   },
+        { name: 'Photoshop',     pct: 82, tone: 'purple' },
+        { name: 'Illustrator',   pct: 78, tone: 'rose'   },
+      ].map(({ name, pct, tone }, i) => (
+        <li key={name}
+          className={`skill-bars__row skill-bars__row--${tone}`}
+          style={{ '--row-i': i }}
+        >
+          <div className="skill-bars__label">
+            <span>{name}</span>
+            <span className="skill-bars__pct">{pct}%</span>
+          </div>
+          <div className="skill-bars__track">
+            <div className="skill-bars__fill"
+              style={{ '--skill-pct': `${pct}%` }} />
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
         </motion.section>
 
         <motion.section
