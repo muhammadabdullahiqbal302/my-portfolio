@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useId } from 'react';
+import React, { useState, useEffect, useRef, } from 'react';
 import { motion, useInView, useReducedMotion,} from 'framer-motion';
 import ProfileCard from './ProfileCard'; // Ye line top par add karo
 import './portfolio.css';
@@ -83,8 +83,6 @@ const NAV = [
   { id: 'contact', label: 'Contact' },
 ];
 
-const HERO_BARS = [42, 68, 55, 88, 48, 72, 61, 95, 54, 78, 66, 90];
-
 const PROJECT_SPARKS = [
   [38, 72, 52, 88, 61],
   [55, 48, 80, 44, 70],
@@ -106,7 +104,6 @@ const Portfolio = () => {
   const reduceMotion = useReducedMotion();
 
   const heroRef = useRef(null);
-  const workRef = useRef(null);
   const skillsRef = useRef(null);
   const lastScrollRef = useRef(0);
 
