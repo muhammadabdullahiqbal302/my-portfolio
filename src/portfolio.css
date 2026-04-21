@@ -1384,5 +1384,113 @@ html.light-mode .site-nav__cta:hover {
 
 .skills-bars-row {
   align-items: stretch !important;
+}/* ===== MOBILE FIXES ===== */
+
+/* Navbar transparent fix */
+@media (max-width: 768px) {
+  .site-nav {
+    background: #0f172a !important;
+    z-index: 9998 !important;
+  }
+
+  .site-nav--open {
+    background: #0f172a !important;
+  }
+
+  /* Navbar logo 2 lines fix */
+  .site-logo {
+    font-size: 0.9rem !important;
+    white-space: nowrap !important;
+  }
+
+  .site-header__inner {
+    padding: 0 0.75rem !important;
+  }
+
+  /* Hero section - text upar pic neche */
+  .hero__layout {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .hero__copy {
+    order: 1 !important;
+  }
+
+  .hero__aside {
+    order: 2 !important;
+  }
+
+  /* Hero text size */
+  .hero__title {
+    font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+  }
+
+  .hero__lead {
+    font-size: 0.95rem !important;
+  }
+
+  .hero__meta {
+    font-size: 0.875rem !important;
+  }
+
+  /* Skills bars mobile - 1 column */
+  .skills-bars-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact panel */
+  .contact-panel {
+    margin: 0 !important;
+    padding: 1.5rem !important;
+  }
 }
 
+/* ProfileCard mobile fix */
+@media (max-width: 768px) {
+  .profile-card-container {
+    height: 380px !important;
+  }
+
+  .profile-pic {
+    width: 240px !important;
+  }
+
+  .float-graph {
+    top: 5% !important;
+    left: 0px !important;
+    transform: scale(0.7) !important;
+    transform-origin: top left !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .left-2 {
+    top: 55% !important;
+    left: 0px !important;
+    transform: scale(0.8) !important;
+    transform-origin: left center !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .right-1 {
+    top: 10% !important;
+    right: 0px !important;
+    left: auto !important;
+    transform: scale(0.8) !important;
+    transform-origin: right center !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .float-donut {
+    top: 58% !important;
+    right: 0px !important;
+    left: auto !important;
+    transform: scale(0.8) !important;
+    transform-origin: right center !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
