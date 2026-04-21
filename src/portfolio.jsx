@@ -94,72 +94,6 @@ const PROJECT_SPARKS = [
 // Animations run only once - no replay on scroll
 const viewOpts = { once: true, amount: 0.22 };
 
-function OrionHeroChart({ revealed }) {
-  const pathRef = useRef(null);
-  const gradId = `orionLineGrad-${useId().replace(/:/g, '')}`;
-
-  useEffect(() => {
-    if (!revealed) return;
-    const path = pathRef.current;
-    if (!path || typeof path.getTotalLength !== 'function') return;
-    const len = path.getTotalLength();
-    path.style.strokeDasharray = String(len);
-    path.style.strokeDashoffset = String(len);
-    path.style.transition = 'none';
-    const raf = requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        path.style.transition =
-          'stroke-dashoffset 1.15s cubic-bezier(0.22, 1, 0.36, 1)';
-        path.style.strokeDashoffset = '0';
-      });
-    });
-    return () => cancelAnimationFrame(raf);
-  }, [revealed]);
-
-  return (
-    <div
-      className={`orion-panel ${revealed ? 'chart-revealed' : ''}`}
-      aria-hidden="true"
-    >
-      <div className="orion-panel__header">
-        <span className="orion-panel__title">Overview</span>
-        <span className="orion-pill">Live</span>
-      </div>
-      <div className="orion-bars" role="presentation">
-        {HERO_BARS.map((h, i) => (
-          <span
-            key={i}
-            className="orion-bars__bar"
-            style={{ height: `${h}%`, '--bar-i': i }}
-          />
-        ))}
-      </div>
-      <svg className="orion-line" viewBox="0 0 320 80" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#4c39f4" />
-            <stop offset="45%" stopColor="#599fd4" />
-            <stop offset="100%" stopColor="#de3f6c" />
-          </linearGradient>
-        </defs>
-        <path
-          ref={pathRef}
-          fill="none"
-          stroke={`url(#${gradId})`}
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M4 58 L48 42 L92 52 L136 28 L180 38 L224 22 L268 34 L312 18"
-        />
-      </svg>
-      <div className="orion-legend">
-        <span className="orion-legend__item orion-legend__item--violet">Builds</span>
-        <span className="orion-legend__item orion-legend__item--blue">Shipped</span>
-        <span className="orion-legend__item orion-legend__item--rose">Creative</span>
-      </div>
-    </div>
-  );
-}
 
 const Portfolio = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -177,7 +111,6 @@ const Portfolio = () => {
   const lastScrollRef = useRef(0);
 
   const heroInView = useInView(heroRef, viewOpts);
-  const workInView = useInView(workRef, viewOpts);
   const skillsInView = useInView(skillsRef, viewOpts);
 
   const t = reduceMotion ? 0.01 : 0.55;

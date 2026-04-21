@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProfileCard.css';
 import profilePic from './assets/image__portfolio.png';
 

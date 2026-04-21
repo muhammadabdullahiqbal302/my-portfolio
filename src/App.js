@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; 
 import Portfolio from './portfolio'; 
 import IntroScreen from './IntroScreen'; 
-import ProfileCard from './ProfileCard'; // Naya animated component import kiya
+// Naya animated component import kiya
 
 function App() {
   const [loading, setLoading] = useState(true);
