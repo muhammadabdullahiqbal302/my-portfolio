@@ -2426,4 +2426,84 @@ nav ul li a.active {
   .site-nav__cta {
     width: calc(110% - 4.5rem) !important;
   }
+}.nav-toggle {
+  position: absolute;
+  right: 20px; /* Right side se gap */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px; /* Fix width taaki poori screen na gheray */
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background: transparent;
+  border: none;
+}
+
+/* Bars ko sahi karne ke liye */
+.nav-toggle__bar {
+  width: 25px;
+  height: 2px;
+  background-color: var(--text-color, #fff);
+  margin: 3px 0;
+}.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: var(--bg-color); /* Blank na dikhe isliye background zaroori hai */
+  transition: background 0.3s ease;
+}
+
+.site-header--scrolled {
+  background: rgba(0, 0, 0, 0.8); /* Dark mode ke liye solid background */
+  backdrop-filter: blur(10px); /* Modern look */
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}@media (max-width: 768px) {
+  .hero__aside {
+    display: flex !important; /* Force show on mobile */
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+    opacity: 1 !important;
+    transform: none !important; /* Animations reset karein agar stuck hain */
+  }
+
+  .profile-card {
+    width: 280px; /* Mobile ke liye munasib size */
+    height: auto;
+    margin: 0 auto;
+  }
+}/* Phir is block mein jo `display` property thi usse default display ke liye customize karo */
+.nav-toggle {
+    display: none; /* Desktop par default chupaye ga */
+    /* ... exists existing styles like position, right, top etc. ... */
+}
+
+/* Ab media query mein isse specific conditions mein show karo */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex; /* Mobile/tablet par specific width se neeche display kare ga */
+        /* ... baki styles jo mobile specificity ke liye pehle decide kiye thay ... */
+    }
+}/* Existing Site Brand Styles update karein mobile breakpoint ke andar */
+@media (max-width: 768px) {
+    /* ... other mobile styles ... */
+
+    .site-logo {
+        margin-right: auto; /* Desktop behaviour explicitly apply karein mobile par */
+        text-align: left; /* Text ko left side alignment dein */
+        /* ... potential gap/padding issues resolve karein header container mein ... */
+    }
+
+    /* Header ke container ko bhi ensure karein ke left align support kare mobile par */
+    .site-header__inner {
+        display: flex;
+        justify-content: flex-start; /* Ensure left alignment for logo and right elements */
+        align-items: center;
+        /* ... existing height/padding styles ... */
+    }
 }
