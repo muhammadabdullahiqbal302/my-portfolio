@@ -2561,5 +2561,88 @@ nav ul li a.active {
   -webkit-backface-visibility: hidden;
   perspective: 1000;
   -webkit-perspective: 1000;
+}/* Sab border aur background reset */
+@media (max-width: 768px) {
+    .site-header, .site-nav, .site-nav__list, .site-nav__list li, .site-nav--open {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        text-decoration: none !important;
+    }
+    
+    /* Agar pseudo-elements se line ban rahi hai */
+    .site-nav::before, .site-nav::after, .site-header::before, .site-header::after {
+        display: none !important;
+        content: none !important;
+    }
+}@media (max-width: 768px) {
+    .site-nav {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 80% !important; /* Width ko thoda kam rakha taaki overlap na ho */
+        max-width: 300px !important;
+        height: 100vh !important;
+        background: #0f172a !important; /* Apni theme ka solid color den */
+        z-index: 99999 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding-top: 100px !important; /* Top se space taaki logo/cross clear dikhe */
+        transform: translateX(100%) !important;
+        transition: transform 0.3s ease-in-out !important;
+        visibility: hidden;
+    }
+
+    .site-nav--open {
+        transform: translateX(0) !important;
+        visibility: visible !important;
+    }
+
+    /* Links ko pill style mein laane ke liye centering */
+    .site-nav__list {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    .site-nav__list li {
+        width: 85% !important;
+        list-style: none !important;
+    }
+
+    .site-nav__list a, .site-nav__cta {
+        display: block !important;
+        width: 100% !important;
+        padding: 15px 0 !important;
+        text-align: center !important;
+        border-radius: 50px !important;
+        background: rgba(99, 102, 241, 0.1) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3) !important;
+        color: white !important;
+    }
+}.nav-toggle {
+    all: unset !important; /* Purani saari gandi properties khatam */
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 100000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
 }
 
+.nav-toggle__bar {
+    width: 25px !important;
+    height: 2px !important;
+    background: white !important;
+    margin: 3px 0 !important;
+    border-radius: 2px !important;
+}
