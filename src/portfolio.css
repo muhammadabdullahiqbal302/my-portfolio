@@ -2645,4 +2645,36 @@ nav ul li a.active {
     background: white !important;
     margin: 3px 0 !important;
     border-radius: 2px !important;
+}@media (max-width: 768px) {
+  /* Hero layout ko block karein taaki image niche show ho */
+  .hero__layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Image container ko check karein */
+  .hero__aside {
+    display: block !important;
+    width: 100% !important;
+    max-width: 300px !important; /* Mobile ke hisaab se size */
+    margin: 20px auto !important;
+    order: 2 !important; /* Text ke niche laane ke liye */
+  }
+
+  /* Actual Image (Profile Pic) */
+  .profile-pic, .hero__aside img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    object-fit: cover !important;
+  }
+}@media (max-width: 768px) {
+  .float-graph, .float-donut, .left-2, .right-1 {
+    transform: scale(0.6) !important; /* Chota karein taaki screen se bahar na jayen */
+    max-width: 100% !important;
+  }
 }
