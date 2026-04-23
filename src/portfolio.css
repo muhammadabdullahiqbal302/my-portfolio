@@ -1056,10 +1056,6 @@ html.light-mode .hero__line--gradient {
   background-clip: text;
 }
 
-.site-header {
-  /* Base styles handled above */
-}
-
 html.light-mode .site-header {
   background: rgba(255, 255, 255, 0.75) !important;
   border-color: rgba(99, 102, 241, 0.1) !important;
@@ -2507,4 +2503,6 @@ nav ul li a.active {
         /* ... existing height/padding styles ... */
     }
 }
-/*test*/
+* {
+    overflow: visible !important;
+}

@@ -1,0 +1,94 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(15px); /* Strong blur effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.expanded-card {
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  max-width: 550px;
+  width: 100%;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-tag {
+  color: #888;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal-title {
+  font-size: 2rem;
+  margin: 10px 0 25px 0;
+  background: linear-gradient(to right, #fff, #888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.modal-desc-list {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-desc-list li {
+  color: #ccc;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  padding-left: 20px;
+  position: relative;
+}
+
+.modal-desc-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color, #646cff);
+}
+
+.modal-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-stack-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.modal-stack-text {
+  color: #aaa;
+  font-family: monospace;
+  margin-top: 5px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}

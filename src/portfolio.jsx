@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, } from 'react';
-import { motion, useInView, useReducedMotion,} from 'framer-motion';
+import { motion, useInView, useReducedMotion, AnimatePresence } from 'framer-motion'; // <-- Step 1: AnimatePresence add kiya
 import ProfileCard from './ProfileCard'; // Ye line top par add karo
+import AnimationCard from './AnimationCard'; // <-- Step 1: Naya component import kiya
+import './AnimationCard.css'; // <-- Step 1: Nayi CSS import ki
 import './portfolio.css';
 /** Orion Charts UI kit–inspired tokens (community palette: violet, blue, purple, rose, lilac) */
 const SITE = {
@@ -94,6 +96,7 @@ const viewOpts = { once: true, amount: 0.22 };
 const Portfolio = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null); // <-- Step 2: State add ki
   // const [navVisible, setNavVisible] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('portfolio-theme');
@@ -366,10 +369,10 @@ Let's talk
           >
             {PROJECTS.map((p, cardIndex) => (
               <motion.li key={p.title} variants={cardItem}>
-                <motion.a
+                <motion.div 
                   className={`project-card project-card--${p.chartTone}`}
-                  href={p.href}
-                  style={{ '--spark-card': cardIndex }}
+                  onClick={() => setSelectedProject(p)} 
+                  style={{ '--spark-card': cardIndex, cursor: 'pointer' }} 
                   whileHover={
                     reduceMotion
                       ? {}
@@ -401,7 +404,7 @@ Let's talk
                     ))}
                   </div>
                   <p className="project-card__stack">{p.stack}</p>
-                </motion.a>
+                </motion.div> {/* <-- Step 3: close bhi div se kiya */}
               </motion.li>
             ))}
           </motion.ul>
@@ -572,6 +575,16 @@ Let's talk
           </motion.div>
         </motion.section>
       </main>
+
+      {/* <-- Step 4: Yahan modal placement add kiya */}
+      <AnimatePresence>
+        {selectedProject && (
+          <AnimationCard 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
+      </AnimatePresence>
 
       <motion.footer
         className="site-footer"
