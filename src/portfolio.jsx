@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef, } from 'react';
 import { motion, useInView, useReducedMotion,} from 'framer-motion';
 import ProfileCard from './ProfileCard'; // Ye line top par add karo
 import './portfolio.css';
-
-
 /** Orion Charts UI kit–inspired tokens (community palette: violet, blue, purple, rose, lilac) */
 const SITE = {
   brand: 'M.Abdullah Portfolio.',
@@ -248,18 +246,47 @@ const Portfolio = () => {
             className={`site-nav ${menuOpen ? 'site-nav--open' : ''}`}
             aria-label="Primary"
           >
-            <ul className="site-nav__list">
-              {NAV.map(({ id, label }) => (
-                <li key={id}>
-                  <a href={`#${id}`} onClick={closeMenu}>
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a className="site-nav__cta" href={SITE.email} onClick={closeMenu}>
-              Let&apos;s talk
-            </a>
+            <nav
+  id="site-nav"
+  className={`site-nav ${menuOpen ? 'site-nav--open' : ''}`}
+  aria-label="Primary"
+>
+  {menuOpen && (
+    <div
+      onClick={closeMenu}
+      aria-hidden="true"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        right: '75%',
+        zIndex: -1,
+        cursor: 'pointer',
+      }}
+    />
+  )}
+
+  <button
+    type="button"
+    className="drawer-close"
+    onClick={closeMenu}
+    aria-label="Close menu"
+  >
+    ✕
+  </button>
+
+  <ul className="site-nav__list">
+    {NAV.map(({ id, label }) => (
+      <li key={id}>
+        <a href={`#${id}`} onClick={closeMenu}>
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+  <a className="site-nav__cta" href={SITE.email} onClick={closeMenu}>
+Let's talk
+  </a>
+</nav>
           </nav>
         </div>
       </motion.header>

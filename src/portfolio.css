@@ -340,8 +340,8 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     padding: 2rem 1.25rem;
-    background: var(--bg);
-    border-top: 1px solid var(--border);
+    background: transparent;
+    border-top: var(--border);
     transform: translateX(100%);
     opacity: 0;
     visibility: hidden;
@@ -1526,4 +1526,904 @@ html.light-mode .site-nav__cta:hover {
 main, footer {
   filter: blur(0px);
   transition: filter 0.3s ease;
+}
+/* Specific targeting for that grey/blue bar */
+.nav-link.active, 
+.active-link,
+nav ul li a.active {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}
+
+/* Agar aap chahte hain ke text ka color white ya baki links jaisa ho jaye */
+.nav-link.active {
+    color: #ffffff !important; /* Aap apni pasand ka color yahan de sakte hain */
+}/* Mobile Menu Container */
+.mobile-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: transparent; /* Isse woh purani patti khatam ho jayegi */
+}
+
+/* Common Pill Style */
+.nav-item-pill {
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s all ease;
+  border: 1.5px solid;
+}
+
+/* Blue pills for menu */
+.blue-style {
+  background-color: rgba(0, 150, 255, 0.05);
+  border-color: rgba(0, 150, 255, 0.3);
+  color: #0096ff;
+}
+
+/* Purple pill for Let's Talk */
+.purple-style {
+  background-color: rgba(138, 43, 226, 0.05);
+  border-color: rgba(138, 43, 226, 0.3);
+  color: #8a2be2;
+}
+
+.nav-item-pill:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}/* PC par mobile wala menu hide rahega */
+.mobile-menu-only {
+  display: none;
+}
+
+/* Mobile screen par aate hi PC wala gayab aur naya wala shuru */
+@media (max-width: 768px) {
+  .desktop-menu-only {
+    display: none;
+  }
+  .mobile-menu-only {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+}@media (max-width: 768px) {
+  /* Work ke peche strip hatao */
+  .site-nav__list li:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .site-nav__list li:first-child a {
+    margin-top: 0 !important;
+  }
+
+  /* Let's talk same size aur align */
+  .site-nav__cta {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 0.85rem 1rem !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
+    margin-top: 0 !important;
+  }
+
+  /* Nav list aur cta same padding */
+  .site-nav {
+    padding: 1.5rem 1.25rem !important;
+    gap: 0.75rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .site-nav__list {
+    width: 100% !important;
+  }
+}@media (max-width: 768px) {
+  .site-nav {
+    background: transparent !important;
+    border-top: none !important;
+  }
+
+  .site-nav--open {
+    background: rgba(10, 14, 26, 0.85) !important;
+    backdrop-filter: blur(40px) !important;
+    -webkit-backdrop-filter: blur(40px) !important;
+    border-top: none !important;
+  }
+
+  html.light-mode .site-nav--open {
+    background: rgba(255, 255, 255, 0.85) !important;
+  }
+}/* Mobile view mein links ka background saaf karne ke liye */
+@media (max-width: 768px) {
+    .site-nav__list li, 
+    .site-nav__list a {
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important; /* Agar koi border hai toh woh bhi hat jayega */
+    }
+}/* 1. Mobile Menu mein background patti hatane ke liye */
+@media (max-width: 768px) {
+  /* Har tarah ki background patti ko khatam karne ke liye */
+  .site-nav__list li {
+    background: transparent !important;
+    background-color: transparent !important;
+    list-style: none !important;
+    margin: 10px 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* 2. Baaki links (Work, About, etc.) ko blue pill design dene ke liye */
+  .site-nav__list a {
+    display: block !important;
+    width: 85% !important;
+    max-width: 300px !important;
+    padding: 12px 0 !important;
+    text-align: center !important;
+    border: 1.5px solid rgba(0, 150, 255, 0.4) !important; /* Blue Border */
+    background: rgba(0, 150, 255, 0.05) !important;
+    color: #0096ff !important;
+    border-radius: 50px !important; /* Pill Shape */
+    font-size: 0.9rem !important;
+  }
+
+  /* 3. Let's talk ko purple hi rakhne ke liye */
+  .site-nav__cta {
+    display: block !important;
+    width: 85% !important;
+    max-width: 300px !important;
+    margin: 15px auto 0 !important; /* Center alignment */
+    padding: 12px 0 !important;
+    text-align: center !important;
+    border: 1.5px solid rgba(138, 43, 226, 0.4) !important; /* Purple Border */
+    background: rgba(138, 43, 226, 0.08) !important;
+    color: #8a2be2 !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+  }
+}@media (max-width: 768px) {
+  /* 1. Patti (Stripe) hatane ka permanent ilaj */
+  .site-nav__list li {
+    background: transparent !important;
+    list-style: none !important;
+    margin: 15px 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* 2. Blue Pills (Work, About, Skills, Contact) */
+  .site-nav__list a {
+    display: block !important;
+    width: 85% !important;
+    max-width: 300px !important;
+    padding: 12px 0 !important;
+    text-align: center !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    
+    /* Base Style */
+    border: 1.5px solid rgba(0, 123, 255, 0.5) !important;
+    color: #007bff !important;
+    background: rgba(0, 123, 255, 0.02) !important;
+    /* Glow Effect */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.1) !important;
+  }
+
+  /* BLUE HOVER: Text Glow + Box Color Change */
+  .site-nav__list a:hover {
+    background: #007bff !important; /* Box color change */
+    color: #ffffff !important;      /* Text white on hover */
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.6) !important; /* Stronger Glow */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important; /* Text Glow */
+    transform: scale(1.05);
+  }
+
+  /* 3. Purple Pill (Let's Talk) */
+  .site-nav__cta {
+    display: block !important;
+    width: 85% !important;
+    max-width: 300px !important;
+    margin: 20px auto !important;
+    padding: 12px 0 !important;
+    text-align: center !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    /* Base Style */
+    border: 1.5px solid rgba(138, 43, 226, 0.5) !important;
+    color: #8a2be2 !important;
+    background: rgba(138, 43, 226, 0.05) !important;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.1) !important;
+  }
+
+  /* PURPLE HOVER: Text Glow + Box Color Change */
+  .site-nav__cta:hover {
+    background: #8a2be2 !important; /* Box color change to solid purple */
+    color: #ffffff !important;      /* Text white */
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.6) !important; /* Stronger Purple Glow */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important; /* White text glow */
+    transform: scale(1.05);
+  }
+
+  /* Light Mode Specific Adjustments */
+  html.light-mode .site-nav__list a,
+  html.light-mode .site-nav__cta {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important; /* Subtle shadow for light mode */
+  }
+}/* ==========================================================================
+   FINAL FIX: PATTI REMOVAL & GLOW EFFECTS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Us specific border-top patti ko khatam karne ke liye */
+  .site-nav, 
+  .site-nav--open {
+    border-top: none !important;
+    background: transparent !important;
+  }
+
+  /* 2. "WORK" ke piche wali background stripe aur list reset */
+  .site-nav__list li {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 1.2rem !important; /* Spacing between pills */
+  }
+
+  /* 3. Glow Buttons - Blue Style (Work, About, etc.) */
+  .site-nav__list a {
+    display: block !important;
+    width: 85% !important;
+    max-width: 300px !important;
+    padding: 14px 0 !important;
+    text-align: center !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    
+    /* Base Style */
+    border: 1.5px solid rgba(0, 150, 255, 0.4) !important;
+    color: #0096ff !important;
+    background: rgba(0, 150, 255, 0.05) !important;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.1) !important;
+  }
+
+  /* BLUE HOVER: Box Solid + White Text + Glow */
+  .site-nav__list a:hover {
+    background: #0096ff !important; /* Box color change */
+    color: #ffffff !important;      /* Text white */
+    box-shadow: 0 0 25px rgba(0, 150, 255, 0.6) !important; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important; /* Text Glow */
+    transform: translateY(-3px) scale(1.03);
+  }
+
+  /* 4. Let's Talk Button - Purple Style */
+  .site-nav__cta {
+    display: block !important;
+    width: 85% !important;
+    max-width: 300px !important;
+    margin: 1rem auto !important;
+    padding: 14px 0 !important;
+    text-align: center !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    /* Base Style */
+    border: 1.5px solid rgba(138, 43, 226, 0.5) !important;
+    color: #8a2be2 !important;
+    background: rgba(138, 43, 226, 0.08) !important;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.2) !important;
+  }
+
+  /* PURPLE HOVER: Box Solid + White Text + Glow */
+  .site-nav__cta:hover {
+    background: #8a2be2 !important; /* Solid Purple */
+    color: #ffffff !important;
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.7) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
+    transform: translateY(-3px) scale(1.03);
+  }
+
+  /* 5. Light Mode Compatibility */
+  html.light-mode .site-nav__list a:hover,
+  html.light-mode .site-nav__cta:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 15px rgba(99, 102, 241, 0.4) !important;
+  }
+}/* ==========================================================================
+   THE "STRIPE KILLER" - LIGHT MODE EDITION
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Target every possible container that could hold that stripe */
+  html.light-mode .site-header,
+  html.light-mode .site-header__inner,
+  html.light-mode .site-nav,
+  html.light-mode .site-nav--open,
+  html.light-mode .site-nav__container {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  /* 2. Pseudo-elements check (kabhi kabhi line ::before se banti hai) */
+  html.light-mode .site-nav::before,
+  html.light-mode .site-nav::after,
+  html.light-mode .site-header::before,
+  html.light-mode .site-header::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* 3. Background transparency fix for the stripe area */
+  html.light-mode .site-nav__list {
+    background: transparent !important;
+    padding-top: 2rem !important; /* Patti wali jagah ko khali karne ke liye gap */
+  }
+
+  /* 4. Resetting the list items again just in case */
+  html.light-mode .site-nav__list li {
+    background: transparent !important;
+    border: none !important;
+    margin: 10px 0 !important;
+  }
+
+  /* 5. Re-applying the Pill Style (Solid Hover) */
+  html.light-mode .site-nav__list a {
+    border: 1.5px solid rgba(0, 123, 255, 0.3) !important;
+    color: #007bff !important;
+    background: rgba(0, 123, 255, 0.05) !important;
+    border-radius: 50px !important;
+  }
+
+  html.light-mode .site-nav__list a:hover {
+    background: #007bff !important;
+    color: #ffffff !important;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3) !important;
+  }
+}/* ==========================================================================
+   LIGHT MODE STRIPE REMOVAL & PILL DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Main Container (Nav) ki patti gayab karne ke liye */
+  html.light-mode .site-nav,
+  html.light-mode .site-nav--open {
+    border-top: none !important; /* Ye patti khatam kar dega */
+    background: #ffffff !important; /* Solid white taaki peeche ka text nazar na aaye */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* 2. List items ke peeche ki extra stripe/background hatayein */
+  html.light-mode .site-nav__list li {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  /* 3. Blue Pills Design (Work, About, etc.) */
+  html.light-mode .site-nav__list a {
+    border: 1.5px solid rgba(0, 123, 255, 0.3) !important;
+    background: rgba(0, 123, 255, 0.05) !important;
+    color: #007bff !important;
+    border-radius: 50px !important;
+    display: block !important;
+    width: 85% !important;
+    margin: 0 auto !important;
+    padding: 12px 0 !important;
+    text-align: center !important;
+  }
+
+  /* Hover par Solid Blue (Jaise Dark Mode mein tha) */
+  html.light-mode .site-nav__list a:hover {
+    background: #007bff !important;
+    color: #ffffff !important;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3) !important;
+  }
+
+  /* 4. Purple Pill (Let's Talk) */
+  html.light-mode .site-nav__cta {
+    border: 1.5px solid rgba(138, 43, 226, 0.4) !important;
+    background: rgba(138, 43, 226, 0.08) !important;
+    color: #8a2be2 !important;
+    border-radius: 50px !important;
+    width: 85% !important;
+    margin: 15px auto !important;
+  }
+
+  /* Hover par Solid Purple */
+  html.light-mode .site-nav__cta:hover {
+    background: #8a2be2 !important;
+    color: #ffffff !important;
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3) !important;
+  }
+}/* ==========================================================================
+   THE ABSOLUTE STRIPE REMOVER (LIGHT & DARK)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Header aur Nav ke beech ki har tarah ki boundary khatam */
+  .site-header, 
+  .site-header__inner, 
+  .site-nav, 
+  .site-nav--open {
+    border: none !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    /* Isse woh white patti gayab ho jayegi */
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* 2. Light mode mein jo background patti ban rahi hai */
+  html.light-mode .site-nav--open {
+    background: rgba(255, 255, 255, 0.98) !important;
+    /* Agar header alag hai toh usko bhi transparent karein */
+  }
+
+  /* 3. "WORK" link ko patti se door karne ke liye spacing */
+  .site-nav__list {
+    margin-top: 40px !important; /* Isse patti wali jagah khali ho jayegi */
+    background: transparent !important;
+  }
+
+  /* 4. Resetting the list items completely */
+  .site-nav__list li {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+  }
+
+  /* 5. Pill Design Fix (Final) */
+  .site-nav__list a, .site-nav__cta {
+    display: block !important;
+    width: 85% !important;
+    margin: 12px auto !important;
+    text-decoration: none !important;
+  }
+}
+
+/* Extra fix: Check if there is a 'before' element creating that line */
+.site-nav::before, .site-nav--open::before {
+    display: none !important;
+    content: none !important;
+}@media (max-width: 768px) {
+  /* Right side drawer */
+  .site-nav {
+    position: fixed !important;
+    inset: 0 0 0 auto !important;
+    width: 75% !important;
+    max-width: 300px !important;
+    height: 100vh !important;
+    padding: 2rem 1.5rem !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 1rem !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: translateX(100%) !important;
+    background: rgba(10, 14, 26, 0.98) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    z-index: 9998 !important;
+  }
+
+  html.light-mode .site-nav {
+    background: rgba(248, 250, 252, 0.99) !important;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.08) !important;
+  }
+
+  .site-nav--open {
+    transform: translateX(0) !important;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  /* Left side tap area to close */
+  .site-nav--open::before {
+    content: '' !important;
+    display: block !important;
+    position: fixed !important;
+    inset: 0 75% 0 0 !important;
+    z-index: -1 !important;
+    cursor: pointer !important;
+  }
+
+  .site-nav__list {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  .site-nav__list li {
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .site-nav__list a {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.85rem 1.25rem !important;
+    text-align: left !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    background: rgba(99, 102, 241, 0.05) !important;
+    color: rgba(255,255,255,0.85) !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    transition: all 0.2s ease !important;
+  }
+
+  html.light-mode .site-nav__list a {
+    color: #334155 !important;
+    border-color: rgba(99, 102, 241, 0.15) !important;
+  }
+
+  .site-nav__list a:hover {
+    background: rgba(99, 102, 241, 0.15) !important;
+    border-color: rgba(99, 102, 241, 0.4) !important;
+    color: #ffffff !important;
+    transform: translateX(4px) !important;
+  }
+
+  html.light-mode .site-nav__list a:hover {
+    color: #4f46e5 !important;
+  }
+
+  .site-nav__cta {
+    width: 100% !important;
+    padding: 0.85rem 1.25rem !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+    margin-top: 0.5rem !important;
+    background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(139,92,246,0.2)) !important;
+    border: 1px solid rgba(99,102,241,0.4) !important;
+    color: #ffffff !important;
+  }
+
+  html.light-mode .site-nav__cta {
+    color: #4f46e5 !important;
+  }
+
+  .site-nav__cta:hover {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    color: #ffffff !important;
+  }
+}/* header container ke liye */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Isse left element end-to-end chipak jaye ga */
+  gap: 15px; /* Adjust karo single square icon ke bad kitni space chahiye */
+  padding: 10px 20px; /* Top-bottom padding alignment ke liye */
+}
+
+/* Duplicated ya unwanted square element ko identify karo */
+/* Example ke liye assuming ye redundant square header_redundant class ka hai */
+.header_redundant {
+  display: none; /* remove visually */
+}/* Navigation container full width join ke liye */
+#site-nav {
+  /* ... existin styles */
+  position: absolute; /* ya fixed */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%; /* Ensure full width on mobile/tablet */
+  background-color: #111; /* Ya tumhara dark color */
+  border-top-left-radius: 20px; /* curved joining look */
+  border-top-right-radius: 20px;
+  overflow: hidden; /* prevents pills edge bleeding */
+}
+
+/* Nav links list jismein overflow hai */
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between pills */
+  padding: 30px; /* Essential! Gives pills breathing space inside panel */
+  width: 100%; /* ensures full horizontal alignment within padding */
+}
+
+/* Link elements in pills style */
+.site-nav__list li a {
+  display: flex; /* proper centering within pill */
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* takes up list width within padding */
+  padding: 15px 30px; /* internal pill padding */
+  /* ... border, border-radius */
+}.close-menu-btn, .menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 100; /* overlay ke upar ho */
+}
+
+/* Positioning cross in nav container top-right corner if needed inside menu */
+.close-menu-btn-inside {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}/* ============================================
+   FINAL CLEAN NAV FIX - DO NOT ADD MORE AFTER
+   ============================================ */
+
+/* Desktop nav - restore */
+@media (min-width: 769px) {
+  .site-nav {
+    position: static !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 1.7rem !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    z-index: auto !important;
+  }
+
+  .site-nav__list {
+    flex-direction: row !important;
+    gap: 1.75rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .site-nav__list li {
+    display: list-item !important;
+    margin: 0 !important;
+    width: auto !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .site-nav__list a {
+    display: inline !important;
+    width: auto !important;
+    padding: 0 !important;
+    text-align: left !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    font-size: 0.8125rem !important;
+    box-shadow: none !important;
+  }
+
+  .site-nav__cta {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0.5rem 1.1rem !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(99, 102, 241, 0.4) !important;
+    background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.15)) !important;
+    color: var(--mist) !important;
+  }
+
+  .drawer-close {
+  background: transparent !important;
+  border: none !important;
+}
+}
+
+/* Mobile nav - right drawer */
+@media (max-width: 768px) {
+  .site-nav {
+    position: fixed !important;
+    inset: 0 0 0 auto !important;
+    width: 70% !important;
+    max-width: 280px !important;
+    height: 100vh !important;
+    padding: 4rem 4rem 2rem !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+    border: none !important;
+    border-radius: 20px 0 0 20px !important;
+    transform: translateX(100%) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    background: rgba(10, 14, 26, 0.97) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.4) !important;
+    z-index: 9998 !important;
+    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1),
+                opacity 0.3s ease,
+                visibility 0.3s ease !important;
+  }
+
+  html.light-mode .site-nav {
+    background: rgba(255, 255, 255, 0.97) !important;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.1) !important;
+  }
+
+  .site-nav--open {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Cross close button */
+  .drawer-close {
+    display: flex !important;
+    position: absolute !important;
+    top: 1.25rem !important;
+    right: 1.25rem !important;
+    width: 36px !important;
+    height: 36px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(99,102,241,0.1) !important;
+    border: 1px solid rgba(99,102,241,0.2) !important;
+    border-radius: 50% !important;
+    color: var(--text) !important;
+    font-size: 1rem !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+  }
+
+  html.light-mode .drawer-close {
+    color: #334155 !important;
+  }
+
+  .site-nav__list {
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    margin-top: 0 !important;
+  }
+
+  .site-nav__list li {
+    display: block !important;
+    width: 100% !important;
+    margin: 0rem !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .site-nav__list a {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.8rem .9rem !important;
+    text-align: left !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(99,102,241,0.15) !important;
+    background: rgba(99,102,241,0.05) !important;
+    color: rgba(255,255,255,0.85) !important;
+    font-size: .78rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: all 0.3s ease !important;
+  }
+
+  html.light-mode .site-nav__list a {
+    color: #334155 !important;
+    border-color: rgba(99,102,241,0.12) !important;
+    background: rgba(99,102,241,0.03) !important;
+  }
+
+  .site-nav__list a:hover {
+    background: rgba(99,102,241,0.15) !important;
+    border-color: rgba(99,102,241,0.35) !important;
+    color: #ffffff !important;
+    transform: translateX(4px) !important;
+    box-shadow: none !important;
+  }
+
+  html.light-mode .site-nav__list a:hover {
+    color: #4f46e5 !important;
+  }
+
+  .site-nav__cta {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.8rem 1rem !important;
+    text-align: center !important;
+    border-radius: 20px !important;
+    margin-top: 0.5rem !important;
+    background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(139,92,246,0.2)) !important;
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
+  }
+
+  html.light-mode .site-nav__cta {
+    color: #4f46e5 !important;
+    background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.08)) !important;
+  }
+
+  .site-nav__cta:hover {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    color: #ffffff !important;
+    transform: none !important;
+  }
+}@media (min-width: 769px) {
+  .site-nav__cta {
+    white-space: nowrap !important;
+  }
+
+  .site-nav__cta:hover {
+    border-color: var(--blue) !important;
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.3) !important;
+    background: linear-gradient(135deg, rgba(99,102,241,0.35), rgba(139,92,246,0.25)) !important;
+    color: var(--mist) !important;
+  }
+}@media (max-width: 768px) {
+  .site-nav__list a {
+    border-radius: 20px !important;
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.15)) !important;
+    color: #ffffff !important;
+    text-align: center !important;
+  }
+
+  html.light-mode .site-nav__list a {
+    color: #6f67f6 !important;
+    background: linear-gradient(135deg, rgba(163, 136, 233, 0.1), rgba(139,92,246,0.08)) !important;
+  }
+
+  .site-nav__list a:hover {
+    background: linear-gradient(135deg, #070be3, #111f55) !important;
+    color: #ffffff !important;
+    transform: none !important;
+  }
+}@media (max-width: 800px) {
+  .site-nav__list li {
+    padding-right: rem !important;
+  }
+
+  .site-nav__list a {
+    width: calc(80% - 2rem) !important;
+  }
+
+  .site-nav__cta {
+    width: calc(110% - 4.5rem) !important;
+  }
 }
