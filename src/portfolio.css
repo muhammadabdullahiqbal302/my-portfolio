@@ -1523,6 +1523,12 @@ html.light-mode .site-nav__cta:hover {
   pointer-events: none;
 }
 
+/* Modal ko blur se bahar rakho */
+.nav-is-open .modal-overlay {
+  filter: none !important;
+  pointer-events: auto !important;
+}
+
 main, footer {
   filter: blur(0px);
   transition: filter 0.3s ease;
@@ -1542,56 +1548,15 @@ nav ul li a.active {
 .nav-link.active {
     color: #ffffff !important; /* Aap apni pasand ka color yahan de sakte hain */
 }/* Mobile Menu Container */
-.mobile-menu-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 20px;
-  background: transparent; /* Isse woh purani patti khatam ho jayegi */
-}
 
-/* Common Pill Style */
-.nav-item-pill {
-  width: 100%;
-  max-width: 320px;
-  padding: 12px 0;
-  text-align: center;
-  border-radius: 50px; /* Pill shape */
-  font-weight: 500;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: 0.3s all ease;
-  border: 1.5px solid;
-}
-
-/* Blue pills for menu */
-.blue-style {
-  background-color: rgba(0, 150, 255, 0.05);
-  border-color: rgba(0, 150, 255, 0.3);
-  color: #0096ff;
-}
-
-/* Purple pill for Let's Talk */
-.purple-style {
-  background-color: rgba(138, 43, 226, 0.05);
-  border-color: rgba(138, 43, 226, 0.3);
-  color: #8a2be2;
-}
 
 .nav-item-pill:hover {
   opacity: 0.8;
   transform: translateY(-2px);
-}/* PC par mobile wala menu hide rahega */
-.mobile-menu-only {
-  display: none;
 }
-
 /* Mobile screen par aate hi PC wala gayab aur naya wala shuru */
 @media (max-width: 768px) {
-  .desktop-menu-only {
-    display: none;
-  }
+  
   .mobile-menu-only {
     display: flex;
     width: 100%;
@@ -2119,31 +2084,8 @@ nav ul li a.active {
     color: #ffffff !important;
   }
 }/* header container ke liye */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Isse left element end-to-end chipak jaye ga */
-  gap: 15px; /* Adjust karo single square icon ke bad kitni space chahiye */
-  padding: 10px 20px; /* Top-bottom padding alignment ke liye */
-}
 
-/* Duplicated ya unwanted square element ko identify karo */
-/* Example ke liye assuming ye redundant square header_redundant class ka hai */
-.header_redundant {
-  display: none; /* remove visually */
-}/* Navigation container full width join ke liye */
-#site-nav {
-  /* ... existin styles */
-  position: absolute; /* ya fixed */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%; /* Ensure full width on mobile/tablet */
-  background-color: #111; /* Ya tumhara dark color */
-  border-top-left-radius: 20px; /* curved joining look */
-  border-top-right-radius: 20px;
-  overflow: hidden; /* prevents pills edge bleeding */
-}
+
 
 /* Nav links list jismein overflow hai */
 .site-nav__list {
@@ -2162,20 +2104,7 @@ nav ul li a.active {
   width: 100%; /* takes up list width within padding */
   padding: 15px 30px; /* internal pill padding */
   /* ... border, border-radius */
-}.close-menu-btn, .menu-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  z-index: 100; /* overlay ke upar ho */
-}
-
-/* Positioning cross in nav container top-right corner if needed inside menu */
-.close-menu-btn-inside {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-}/* ============================================
+} /* ===========================================
    FINAL CLEAN NAV FIX - DO NOT ADD MORE AFTER
    ============================================ */
 
@@ -2507,9 +2436,7 @@ nav ul li a.active {
         /* ... existing height/padding styles ... */
     }
 }
-* {
-    overflow: visible !important;
-}@media (max-width: 768px) {
+@media (max-width: 768px) {
   /* Drawer Container Fix */
   .site-nav {
     position: fixed !important;
@@ -2624,19 +2551,6 @@ nav ul li a.active {
         border: 1px solid rgba(99, 102, 241, 0.3) !important;
         color: white !important;
     }
-}.nav-toggle {
-    all: unset !important; /* Purani saari gandi properties khatam */
-    position: fixed !important;
-    top: 20px !important;
-    right: 20px !important;
-    width: 40px !important;
-    height: 40px !important;
-    z-index: 100000 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    cursor: pointer !important;
 }
 
 .nav-toggle__bar {
@@ -2654,19 +2568,11 @@ nav ul li a.active {
     text-align: center !important;
   }
 
-  /* Image container ko check karein */
-  .hero__aside {
-    display: block !important;
-    width: 100% !important;
-    max-width: 300px !important; /* Mobile ke hisaab se size */
-    margin: 20px auto !important;
-    order: 2 !important; /* Text ke niche laane ke liye */
-  }
+
 
   /* Actual Image (Profile Pic) */
   .profile-pic, .hero__aside img {
     display: block !important;
-    width: 100% !important;
     height: auto !important;
     opacity: 1 !important;
     visibility: visible !important;
@@ -2674,7 +2580,104 @@ nav ul li a.active {
   }
 }@media (max-width: 768px) {
   .float-graph, .float-donut, .left-2, .right-1 {
-    transform: scale(0.6) !important; /* Chota karein taaki screen se bahar na jayen */
+    transform: scale(0.85) !important; /* Chota karein taaki screen se bahar na jayen */
     max-width: 100% !important;
   }
+}/* ===== FIX: Let's talk + hamburger overlap ===== */
+@media (max-width: 768px) {
+  .site-header__inner {
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;
+    align-items: center !important;
+  }
+
+  /* theme toggle - left */
+  .theme-toggle {
+    grid-column: 1 !important;
+  }
+
+  /* logo - center */
+  .site-logo {
+    grid-column: 2 !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+
+  /* hamburger - right, fixed width */
+  .nav-toggle {
+    grid-column: 3 !important;
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    right: auto !important;
+    width: 40px !important;
+    height: 40px !important;
+    flex-shrink: 0 !important;
+  }
+}/* ===== FIX: Profile pic mobile tap ===== */
+.hero__aside,
+.profile-card-container,
+.profile-pic,
+.hero__image-wrapper {
+  pointer-events: auto !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: default !important; /* iOS long-press menu enable */
+  touch-action: manipulation !important;
+}
+
+/* Tap highlight visible karo mobile par */
+.profile-pic {
+  -webkit-tap-highlight-color: transparent !important;
+  cursor: pointer !important;
+}/* ===== HAMBURGER FINAL OVERRIDE ===== */
+.nav-toggle {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  transform: none !important;
+  display: none !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  background: var(--bg-elevated) !important;
+  cursor: pointer !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex-shrink: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex !important;
+  }
+
+  .site-header__inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 1rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .site-logo {
+    flex: 1 !important;
+    text-align: center !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .theme-toggle {
+    flex-shrink: 0 !important;
+    order: -1 !important;
+  }
+}.nav-is-open .modal-overlay {
+  filter: none !important;
+  pointer-events: auto !important;
 }

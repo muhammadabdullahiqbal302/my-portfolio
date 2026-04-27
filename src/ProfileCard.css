@@ -240,4 +240,15 @@
     width: 260px !important;
     height: auto !important;
   }
+}/* Profile pic tap fix */
+.profile-main-wrapper {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(99, 102, 241, 0.2);
+}
+
+.profile-pic {
+  pointer-events: auto !important;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-touch-callout: default;
 }
