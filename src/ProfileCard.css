@@ -209,19 +209,6 @@
     display: block !important;
   }
 
-  /* Hide floating items on mobile to keep focus on pic */
-  .float-graph,
-  .left-2,
-  .right-1,
-  .float-donut {
-    display: none !important;
-  }
-}
-
-/* Profile pic tap fix */
-.profile-main-wrapper {
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(99, 102, 241, 0.2);
 }
 
 .profile-pic {

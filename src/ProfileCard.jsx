@@ -1,9 +1,7 @@
+import profilePic from './assets/portfolio.jpg';
 import React, { useEffect, useState } from 'react';
 import './ProfileCard.css';
-import profilePic from './assets/image__portfolio.png';
-
 const GRAPH_BARS = [60, 85, 45, 90, 70, 80, 55];
-
 function MiniGraph() {
   const [revealed, setRevealed] = useState(false);
   useEffect(() => {
@@ -97,7 +95,7 @@ const ProfileCard = () => {
     <div className="profile-card-container">
       {/* Left side */}
       <MiniGraph />
-      <TypewriterText text="< Code />" delay={1100} className="left-2" />
+      <TypewriterText text="< Code />" delay={1200} className="left-2" />
 
       {/* Main pic */}
       <div className="profile-main-wrapper">
@@ -105,7 +103,7 @@ const ProfileCard = () => {
       </div>
 
       {/* Right side */}
-      <TypewriterText text="UI/UX" delay={1300} className="right-1" />
+      <TypewriterText text="UI/UX" delay={1400} className="right-1" />
       <DonutChart />
     </div>
   );
