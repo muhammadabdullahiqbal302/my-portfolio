@@ -24,9 +24,9 @@
   inset: 0;
   border-radius: 20px;
   background: radial-gradient(ellipse at center,
-    transparent 30%,
-    rgba(10, 8, 20, 0.4) 60%,
-    rgba(5, 4, 15, 0.85) 100%
+    transparent 40%,
+    rgba(15, 23, 42, 0.15) 70%,
+    rgba(15, 23, 42, 0.4) 100%
   );
   z-index: 11;
   pointer-events: none;
@@ -179,53 +179,15 @@
 .right-1     { animation: popInRight 0.6s cubic-bezier(0.22,1,0.36,1) 1.2s both; }
 .float-donut { animation: popInRight 0.6s cubic-bezier(0.22,1,0.36,1) 1.3s both; }html.light-mode .float-donut svg text {
   fill: #4f46e5 !important;
-}@media (max-width: 768px) {
-  .profile-card-container {
-    height: 420px;
-  }
-
-  .profile-pic {
-    width: 280px;
-  }
-
-  /* Floating items pic ke bilkul paas */
-  .float-graph {
-    top: 8% !important;
-    left: 50% !important;
-    transform: translateX(-160px) scale(0.8) !important;
-    transform-origin: top left;
-  }
-
-  .left-2 {
-    top: 55% !important;
-    left: 50% !important;
-    transform: translateX(-160px) scale(0.85) !important;
-  }
-
-  .right-1 {
-    top: 15% !important;
-    right: 50% !important;
-    transform: translateX(160px) scale(0.85) !important;
-  }
-
-  .float-donut {
-    top: 60% !important;
-    right: 50% !important;
-    transform: translateX(160px) scale(0.85) !important;
-  }
-
-  /* Hover pe jump na ho mobile pe */
-  .float-graph:hover,
-  .left-2:hover,
-  .right-1:hover,
-  .float-donut:hover {
-    transform: none !important;
-  }
-}
+}/* Mobile Profile Card - Fixed Positioning */
 @media (max-width: 768px) {
   .profile-card-container {
-    height: 500px !important;
+    position: relative;
+    height: 380px !important;
+    width: 100%;
     overflow: visible !important;
+    margin: 0 auto;
+    filter: none !important;
   }
 
   .profile-main-wrapper {
@@ -234,13 +196,29 @@
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     z-index: 10 !important;
+    width: 240px !important;
+    height: auto !important;
   }
 
   .profile-pic {
-    width: 260px !important;
+    width: 100% !important;
     height: auto !important;
+    max-width: 240px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
   }
-}/* Profile pic tap fix */
+
+  /* Hide floating items on mobile to keep focus on pic */
+  .float-graph,
+  .left-2,
+  .right-1,
+  .float-donut {
+    display: none !important;
+  }
+}
+
+/* Profile pic tap fix */
 .profile-main-wrapper {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(99, 102, 241, 0.2);

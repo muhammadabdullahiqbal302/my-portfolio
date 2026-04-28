@@ -85,18 +85,15 @@ html.light-mode .contact-panel {
   overflow-x: hidden;
 }
 
-/* NEW: Global Glass Overlay Layer */
 .portfolio::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 0;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.1) 100%);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   pointer-events: none;
+  /* backdrop-filter hataya — modal ko block karta tha */
 }
-
 /* Mesh Gradient Glows */
 .portfolio__glow {
   position: fixed;
