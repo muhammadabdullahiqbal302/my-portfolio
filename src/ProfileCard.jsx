@@ -1,4 +1,3 @@
-import profilePic from './assets/portfolio.jpg';
 import React, { useEffect, useState } from 'react';
 import './ProfileCard.css';
 const GRAPH_BARS = [60, 85, 45, 90, 70, 80, 55];
@@ -99,7 +98,8 @@ const ProfileCard = () => {
 
       {/* Main pic */}
       <div className="profile-main-wrapper">
-        <img src={profilePic} alt="Abdullah Iqbal" className="profile-pic" />
+        // Isey aise change karo ✅
+<img src="/portfolio.jpg" alt="Abdullah Iqbal" className="profile-pic" />
       </div>
 
       {/* Right side */}
