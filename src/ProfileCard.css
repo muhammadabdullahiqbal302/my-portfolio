@@ -6,9 +6,10 @@
   width: 100%;
   height: 500px;
   background: transparent;
-  border-radius: 25px;
+  border-radius: 24px;
   filter: drop-shadow(0 0 40px rgba(99, 102, 241, 0.5))
           drop-shadow(0 0 80px rgba(139, 92, 246, 0.3));
+  overflow: visible;
 }
 
 .profile-main-wrapper {
@@ -16,6 +17,7 @@
   z-index: 10;
   border-radius: 20px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .profile-main-wrapper::after {
@@ -24,20 +26,25 @@
   inset: 0;
   border-radius: 20px;
   background: radial-gradient(ellipse at center,
-    transparent 40%,
-    rgba(15, 23, 42, 0.15) 70%,
-    rgba(15, 23, 42, 0.4) 100%
+    transparent 30%,
+    rgba(10, 8, 20, 0.4) 60%,
+    rgba(5, 4, 15, 0.85) 100%
   );
   z-index: 11;
   pointer-events: none;
 }
 
 .profile-pic {
-  width: 380px;
+  width: 320px;
   height: auto;
   border-radius: 20px;
   border: 2px solid rgba(255, 255, 255, 0.15);
   display: block;
+  /* iOS Safari fix */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Floating items base */
@@ -45,7 +52,7 @@
 .float-graph,
 .float-donut {
   position: absolute;
-  background: rgba(15, 12, 35, 0.7);
+  background: rgba(15, 12, 35, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 10px;
@@ -54,34 +61,10 @@
   font-size: 12px;
   font-weight: 700;
   z-index: 20;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
 }
 
-.animated-item:hover,
-.float-graph:hover,
-.float-donut:hover {
-  transform: scale(1.08) translateY(-4px) !important;
- box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
-}
-/* Har item ka alag hover */
-.float-graph:hover {
-  transform: scale(1.08) translateY(-3px) translateX(-40%) !important;
-}
-
-.left-2:hover {
-  transform: scale(1.08) translateY(-3px) translateX(-40%) !important;
-}
-
-.right-1:hover {
-  transform: scale(1.08) translateY(-3px) translateX(40%) !important;
-}
-
-.float-donut:hover {
-  transform: scale(1.08) translateY(-3px) translateX(40%) !important;
-}
-
-/* Typewriter text items */
+/* Typewriter items */
 .animated-item {
   padding: 7px 14px;
   font-family: 'JetBrains Mono', monospace;
@@ -89,19 +72,19 @@
 }
 
 .cursor {
-  animation: blink 1s infinite;
+  animation: blink 0.8s infinite;
   color: #6366f1;
   margin-left: 1px;
 }
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  50%       { opacity: 0; }
 }
 
-/* Positions */
-.left-2  { top: 52%; left: 0; transform: translateX(-40%); }
-.right-1 { top: 25%; right: 0; transform: translateX(40%); }
+/* Positions - desktop */
+.left-2  { top: 52%; left: 0; transform: translateX(-45%); }
+.right-1 { top: 22%; right: 0; transform: translateX(45%); }
 
 /* Mini Bar Graph */
 .float-graph {
@@ -133,9 +116,10 @@
   transition-delay: calc(var(--i) * 0.07s);
 }
 
-.float-graph__bar.revealed {
-  transform: scaleY(1);
-}
+.float-graph__bar.revealed { transform: scaleY(1); }
+
+.float-graph__bar:nth-child(3n)   { background: linear-gradient(180deg, #0ea5e9, #6366f1); }
+.float-graph__bar:nth-child(3n+1) { background: linear-gradient(180deg, #ec4899, #a855f7); }
 
 .float-graph__label {
   font-size: 10px;
@@ -164,22 +148,44 @@
   letter-spacing: 0.05em;
 }
 
-/* Pop-in animation */
+/* Pop-in animations */
 @keyframes popIn {
   0%   { opacity: 0; transform: scale(0.7) translateX(-45%); }
-  100% { opacity: 1; transform: scale(1) translateX(-45%); }
+  100% { opacity: 1; transform: scale(1)   translateX(-45%); }
 }
 @keyframes popInRight {
   0%   { opacity: 0; transform: scale(0.7) translateX(45%); }
-  100% { opacity: 1; transform: scale(1) translateX(45%); }
+  100% { opacity: 1; transform: scale(1)   translateX(45%); }
 }
 
-.float-graph { animation: popIn 0.6s cubic-bezier(0.22,1,0.36,1) 1s both; }
-.left-2      { animation: popIn 0.6s cubic-bezier(0.22,1,0.36,1) 1.1s both; }
+.float-graph { animation: popIn      0.6s cubic-bezier(0.22,1,0.36,1) 1.0s both; }
+.left-2      { animation: popIn      0.6s cubic-bezier(0.22,1,0.36,1) 1.1s both; }
 .right-1     { animation: popInRight 0.6s cubic-bezier(0.22,1,0.36,1) 1.2s both; }
-.float-donut { animation: popInRight 0.6s cubic-bezier(0.22,1,0.36,1) 1.3s both; }html.light-mode .float-donut svg text {
-  fill: #4f46e5 !important;
-}/* Mobile Profile Card - Fixed Positioning */
+.float-donut { animation: popInRight 0.6s cubic-bezier(0.22,1,0.36,1) 1.3s both; }
+
+/* Light mode */
+html.light-mode .animated-item,
+html.light-mode .float-graph,
+html.light-mode .float-donut {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(99, 102, 241, 0.2) !important;
+  color: #4f46e5 !important;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12) !important;
+}
+
+html.light-mode .float-donut svg text { fill: #4f46e5 !important; }
+
+html.light-mode .profile-card-container {
+  filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.25))
+          drop-shadow(0 0 60px rgba(139, 92, 246, 0.15)) !important;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .profile-card-container {
+    height: 420px !important;
+    overflow: visible !important;
+  }
 
   .profile-main-wrapper {
     position: absolute !important;
@@ -187,24 +193,59 @@
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     z-index: 10 !important;
-    width: 240px !important;
-    height: auto !important;
   }
 
   .profile-pic {
-    width: 100% !important;
+    width: 220px !important;
     height: auto !important;
-    max-width: 240px !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: block !important;
   }
 
+  .float-graph {
+    top: 5% !important;
+    left: 4px !important;
+    transform: scale(0.75) !important;
+    transform-origin: top left !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
 
+  .left-2 {
+    top: 60% !important;
+    left: 4px !important;
+    transform: scale(0.8) !important;
+    transform-origin: left center !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
 
-.profile-pic {
-  pointer-events: auto !important;
-  -webkit-user-drag: none;
-  user-select: none;
-  -webkit-touch-callout: default;
+  .right-1 {
+    top: 12% !important;
+    right: 4px !important;
+    left: auto !important;
+    transform: scale(0.8) !important;
+    transform-origin: right center !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .float-donut {
+    top: 60% !important;
+    right: 4px !important;
+    left: auto !important;
+    transform: scale(0.8) !important;
+    transform-origin: right center !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* No hover effects on mobile */
+  .float-graph:hover,
+  .left-2:hover,
+  .right-1:hover,
+  .float-donut:hover {
+    transform: scale(0.75) !important;
+  }
+  .right-1:hover, .float-donut:hover {
+    transform: scale(0.8) !important;
+  }
 }
