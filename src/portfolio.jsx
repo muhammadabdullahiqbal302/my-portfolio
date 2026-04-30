@@ -25,10 +25,10 @@ const SKILLS = [
 ];
 
 const SKILL_LEVELS = [
-  { name: 'React', pct: 92, tone: 'violet' },
-  { name: 'JavaScript', pct: 88, tone: 'blue' },
-  { name: 'HTML & CSS', pct: 90, tone: 'purple' },
-  { name: 'Design systems', pct: 80, tone: 'rose' },
+  { name: 'React(AI)', pct: 92, tone: 'violet' },
+  { name: 'JavaScript(AI)', pct: 88, tone: 'blue' },
+  { name: 'HTML & CSS(AI)', pct: 90, tone: 'purple' },
+  { name: 'UX-UI Design(AI)', pct: 80, tone: 'rose' },
 ];
 
 const PROJECTS = [
@@ -36,10 +36,10 @@ const PROJECTS = [
     title: 'Web Development',
     desc: [
       'Building modern, fast & accessible web apps with React.',
-      '2-3 years of experience with AI-assisted workflows.',
+      '2 years of experience with AI-assisted workflows.',
       'Responsive UIs and API-driven interfaces.',
     ],
-    stack: 'React · JavaScript · REST APIs · AI Tools',
+    stack: 'React · JavaScript · REST APIs · AI Tools · UX-UI Design',
     href: '#work',
     chartTone: 'violet',
   },
@@ -47,10 +47,10 @@ const PROJECTS = [
     title: 'Video Editing',
     desc: [
       'End-to-end video production with Premiere Pro & After Effects.',
-      '3D tracking and motion graphics experience.',
-      '3 years creating long-form and short-form content.',
+      '3D tracking , faceless video , podcast video and motion graphics experience.',
+      '2.5 years creating long-form and short-form content.',
     ],
-    stack: 'Premiere Pro · After Effects · 3D Tracking',
+    stack: 'Premiere Pro · After Effects · 3D Camera Tracking',
     href: '#work',
     chartTone: 'blue',
   },
@@ -60,6 +60,7 @@ const PROJECTS = [
       'Brand identities, logos, and social media assets.',
       'Photoshop & Illustrator — driven by original ideas.',
       'Creative concepts fused with personal vision.',
+      'I use AI to make my projects more creative.',
     ],
     stack: 'Photoshop · Illustrator · Brand Design',
     href: '#work',
@@ -359,7 +360,7 @@ const Portfolio = () => {
             <motion.div className="about-card" variants={cardItem}>
               <h3>Who I am</h3>
               <p>
-                I&apos;m <strong>{SITE.name}</strong> — a web developer, video editor, and
+                I&apos;m <strong>{SITE.name}</strong> — A web developer, video editor, and
                 graphic designer. I bring ideas to life using my own creativity and
                 AI-assisted workflows, turning concepts into professional digital experiences.
               </p>
